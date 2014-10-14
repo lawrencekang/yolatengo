@@ -11,6 +11,10 @@ module.exports = function(app, passport){
      res.sendFile('signin.html', {root: __dirname + '/../client'});
   });
 
+
+  app.get('/*', function(req, res){
+     res.sendFile('index.html', {root: __dirname + '/../client'});
+  });
   // GET /auth/google
   //   Use passport.authenticate() as route middleware to authenticate the
   //   request.  The first step in Google authentication will involve redirecting

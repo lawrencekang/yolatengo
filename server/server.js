@@ -4,10 +4,8 @@ var GoogleStrategy = require('passport-google').Strategy;
 var morgan = require('morgan');
 var session = require('express-session');
 var passportConfig = require('./passportConfig')(passport);
-var util = require('./util');
 
 app = express();
-
 
 app.use(session({ secret: 'keyboard cat', 
                   saveUninitialized: true,
@@ -15,10 +13,9 @@ app.use(session({ secret: 'keyboard cat',
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(__dirname + '../client'));
-app.use('/account', util.ensureAuthenticated);
 app.use(morgan('short'));
 
-
+var middleware = require('./middleware')(app);
 var routes = require('./routes')(app, passport);
 
 
