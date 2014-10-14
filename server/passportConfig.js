@@ -1,6 +1,7 @@
-var passport = require('passport');
+
 var GoogleStrategy = require('passport-google').Strategy;
 
+module.exports = function(passport) {
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session.  Typically,
@@ -39,4 +40,4 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-module.exports = passport;
+};
